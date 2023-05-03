@@ -14,6 +14,9 @@ const SignUpForm = () => {
         password1: "",
         password2: "",
     })
+
+    const[errors, setErrors] = useState({})
+
     const {username, password1, password2} = signUpData;
 
     const history = useHistory();
@@ -66,6 +69,9 @@ const SignUpForm = () => {
                 onChange={handleChange}
               />
             </Form.Group>
+            {errors.password1?.map((message, idx) => 
+                <Alert variant="warning" key={idx}>{message}</Alert>    
+            )}
             <Form.Group controlId="password2">
               <Form.Label className="d-none">Confirm password</Form.Label>
               <Form.Control
@@ -77,6 +83,9 @@ const SignUpForm = () => {
                 onChange={handleChange}
               />
             </Form.Group>
+            {errors.password2?.map((message, idx) => 
+                <Alert variant="warning" key={idx}>{message}</Alert>    
+            )}
 
             <Button className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright} `} type="submit">
               Sign up
