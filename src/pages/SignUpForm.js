@@ -90,6 +90,9 @@ const SignUpForm = () => {
             <Button className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright} `} type="submit">
               Sign up
             </Button>
+            {errors.non_field_errors?.map((message, idx) => 
+                <Alert variant="warning" className="mt-3" key={idx}>{message}</Alert>    
+            )}
           </Form>
         </Container>
         <Container className={`mt-3 ${appStyles.Content}`}>
