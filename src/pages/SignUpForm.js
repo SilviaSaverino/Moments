@@ -5,7 +5,7 @@ import styles from "../styles/SignInUpForm.module.css";
 import btnStyles from "../styles/Button.module.css";
 import appStyles from "../App.module.css";
 
-import { Form, Button, Image, Col, Row, Container } from "react-bootstrap";
+import { Form, Button, Image, Col, Row, Container, Alert } from "react-bootstrap";
 import axios from "axios";
 
 const SignUpForm = () => {
@@ -31,7 +31,7 @@ const SignUpForm = () => {
             await axios.post('/dj-rest-auth/registration/', signUpData)
             history.push('/signin')
         } catch(err) {
-
+            setErrors(err.response?.data)
         }
     }
 
@@ -52,6 +52,9 @@ const SignUpForm = () => {
                 onChange={handleChange}
               />
             </Form.Group>
+            {errors.username?.map((message, idx) => 
+                <Alert variant="warning" key={idx}>{message}</Alert>    
+            )}
             <Form.Group controlId="password1">
               <Form.Label className="d-none">Password1</Form.Label>
               <Form.Control
