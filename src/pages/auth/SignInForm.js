@@ -15,7 +15,7 @@ import styles from "/workspaces/moments/src/styles/SignInUpForm.module.css";
 import btnStyles from "/workspaces/moments/src/styles/Button.module.css";
 import appStyles from "/workspaces/moments/src/App.module.css";
 
-import {useSetCurrentUser} from "../contexts/CurrentUserContext"
+import {useSetCurrentUser} from "/workspaces/moments/src/contexts/CurrentUserContext.js"
 
 function SignInForm() {
     
