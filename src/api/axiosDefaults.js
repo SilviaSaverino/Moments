@@ -1,5 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = 'https://moments-project-frontend.herokuapp.com/'
+// axios.defaults.baseURL = 'https://moments-project-frontend.herokuapp.com/'
+axios.defaults.baseURL =  'https://django-rest-framework-backend.herokuapp.com/'
 axios.defaults.headers.post['Content-Type'] = 'multipart/form-data'
 axios.defaults.withCredentials = true
