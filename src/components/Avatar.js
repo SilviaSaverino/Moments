@@ -12,3 +12,8 @@ const Avatar = ({src, height = 45, text}) => {
 };
 
 export default Avatar;
+
+
+/*CLOUDINARY PATH IN DEV CONSOLE IS WRONG. IT SHOULD BE 
+https://res.cloudinary.com/dabrhdlgw/image/upload/v1681903694/samples/CODE%20INSTITUTE%20MODULES/default_profile_de0exc.jpg
+.......so the profile avatar pic are not loading. Must move the files outside of the folder, or update my settings*/
