@@ -12,6 +12,10 @@ import CommentCreateForm from "../comments/CommentCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Comment from "../comments/Comment";
 
+import Asset from "../../components/Asset";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../ultils/ultils";
+
 function PostPage() {
   const { id } = useParams();
   const [post, setPost] = useState({ results: [] });
@@ -41,7 +45,6 @@ function PostPage() {
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <p>Popular profiles for mobile</p>
-
         <Post {...post.results[0]} setPosts={setPost} postPage />
         <Container className={appStyles.Content}>
           {currentUser ? (
@@ -55,19 +58,26 @@ function PostPage() {
           ) : comments.results.length ? (
             "Comments"
           ) : null}
-
           {comments.results.length ? (
-            comments.results.map((comment) => (
-                <Comment key={comment.id} {...comment} 
-                setPost={setPost}
-                setComments={setComments} />
-            ))
+            <InfiniteScroll
+              children={comments.results.map((comment) => (
+                <Comment
+                  key={comment.id}
+                  {...comment}
+                  setPost={setPost}
+                  setComments={setComments}
+                />
+              ))}
+              dataLength={comments.results.length}
+              loader={<Asset spinner />}
+              hasMore={!!comments.next}
+              next={() => fetchMoreData(comments, setComments)}
+            />
           ) : currentUser ? (
-            <span>No comments yet, be the first to add one!</span>
+            <span>No comments yet, be the first to comment!</span>
           ) : (
-            <span>No comments..yet</span>
-          )
-        }
+            <span>No comments... yet</span>
+          )}
         </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
