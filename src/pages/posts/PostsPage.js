@@ -14,7 +14,7 @@ import NoResults from "/workspaces/moments/src/assets/no-results.png";
 import Asset from "../../components/Asset";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../ultils/ultils";
-import PopularProfiles from "../PopularProfiles";
+import PopularProfiles from "../profiles/PopularProfiles";
 
 function PostsPage({ message, filter = "" }) {
   const [posts, setPosts] = useState({ results: [] });
